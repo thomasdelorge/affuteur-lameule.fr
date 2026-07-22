@@ -17,7 +17,7 @@
       {{ end }}
     </ul>
     <p class="section__footer-link">
-      <a class="text-link text-link--dark" href="{{ $s.footer_link_url }}">{{ $s.footer_link_text }} →</a>
+      <a class="text-link text-link--dark" href="{{ partial "site-href.html" $s.footer_link_url }}">{{ $s.footer_link_text }} →</a>
     </p>
   </div>
 </section>

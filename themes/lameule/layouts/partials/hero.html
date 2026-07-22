@@ -9,8 +9,8 @@
       </h1>
       <p class="hero__sub">{{ $h.subheadline }}</p>
       <div class="hero__actions">
-        <a class="btn btn--accent" href="{{ $h.cta_primary_url }}">{{ $h.cta_primary }}</a>
-        <a class="btn btn--ghost" href="{{ $h.cta_secondary_url }}">{{ $h.cta_secondary }}</a>
+        <a class="btn btn--accent" href="{{ partial "site-href.html" $h.cta_primary_url }}">{{ $h.cta_primary }}</a>
+        <a class="btn btn--ghost" href="{{ partial "site-href.html" $h.cta_secondary_url }}">{{ $h.cta_secondary }}</a>
       </div>
     </div>
     <figure class="hero__media">

@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="{{ "/" | relURL }}">
+    <a class="site-header__brand" href="{{ site.Home.RelPermalink }}">
       {{ partial "logo.html" (dict "src" site.Params.logoLight "size" 80 "class" "site-header__logo") }}
     </a>
 
@@ -12,7 +12,7 @@
     <nav id="site-nav" class="site-nav" data-nav>
       <ul>
         {{ range site.Menus.main }}
-          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          <li><a href="{{ partial "site-href.html" .URL }}">{{ .Name }}</a></li>
         {{ end }}
         <li>
           <a class="btn btn--accent btn--sm btn--phone" href="{{ site.Params.phoneHref | safeURL }}">

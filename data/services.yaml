@@ -2,7 +2,7 @@
 # icon = nom du partial SVG (Font Awesome solid) : utensils, scissors, seedling, fan, hammer, cut
 title: "CHAQUE LAME MÉRITE UN VRAI FIL."
 footer_link_text: "Pour qui je travaille"
-footer_link_url: "/#audiences"
+footer_link_url: "#audiences"
 items:
   - title: "Couteaux de cuisine"
     description: "Couteaux de chef, office, pain, lames de robots (Thermomix et autres)."

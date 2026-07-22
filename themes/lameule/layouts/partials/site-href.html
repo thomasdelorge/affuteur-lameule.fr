@@ -1,0 +1,19 @@
+{{/*
+  Resolve a site-root path under baseURL (GitHub Pages project sites).
+  Usage: partial "site-href.html" "/#planning"
+*/}}
+{{- $u := . | string -}}
+{{- $home := strings.TrimSuffix "/" site.Home.RelPermalink -}}
+{{- if or (hasPrefix $u "http://") (hasPrefix $u "https://") (hasPrefix $u "mailto:") (hasPrefix $u "tel:") (hasPrefix $u "//") -}}
+  {{- $u -}}
+{{- else if or (eq $u $home) (eq $u (printf "%s/" $home)) (hasPrefix $u (printf "%s/" $home)) (hasPrefix $u (printf "%s#" $home)) -}}
+  {{- $u -}}
+{{- else if hasPrefix $u "#" -}}
+  {{- printf "%s%s" site.Home.RelPermalink (strings.TrimPrefix "#" $u | printf "#%s") -}}
+{{- else if hasPrefix $u "/#" -}}
+  {{- printf "%s%s" site.Home.RelPermalink (strings.TrimPrefix "/" $u) -}}
+{{- else if hasPrefix $u "/" -}}
+  {{- printf "%s%s" $home $u -}}
+{{- else -}}
+  {{- $u | relURL -}}
+{{- end -}}
