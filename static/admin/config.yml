@@ -2,6 +2,8 @@ backend:
   name: github
   repo: thomasdelorge/affuteur-lameule.fr
   branch: main
+  base_url: https://cms.thomasdelorge.fr
+  auth_endpoint: auth
 media_folder: static/images
 public_folder: /images
 collections:
