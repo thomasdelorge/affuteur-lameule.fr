@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }} | {{ site.Params.artisan }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="Affûtage artisanal de couteaux, ciseaux et outils en Maine-et-Loire et Deux-Sèvres. Camion-atelier, marchés, dépôt et à domicile.">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="alternate" type="text/plain" title="llms.txt" href="{{ "llms.txt" | absURL }}">
+{{- if .IsHome }}
+<link rel="alternate" type="text/markdown" title="Markdown" href="{{ "index.html.md" | absURL }}">
+{{- else }}
+<link rel="alternate" type="text/markdown" title="Markdown" href="{{ printf "%sindex.html.md" .Permalink }}">
+{{- end }}
+
+{{- $ogSrc := resources.Get (site.Params.ogImage | default "images/hero-clients.jpg") -}}
+{{- $og := false -}}
+{{- with $ogSrc -}}
+  {{- $og = .Fill "1200x630 center q80 webp" -}}
+{{- end -}}
+{{- $favicon := false -}}
+{{- with resources.Get (site.Params.logo | default "images/logo.png") -}}
+  {{- $favicon = .Resize "64x64 png" -}}
+{{- end -}}
+
+<meta property="og:title" content="{{ site.Title }} · {{ site.Params.artisan }}">
+<meta property="og:description" content="Restez affûté. Affûtage artisanal local · {{ site.Params.zone }}.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="fr_FR">
+{{- with $og }}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+<meta property="og:image:type" content="image/webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ .Permalink }}">
+{{- end }}
+
+{{- with $favicon }}
+<link rel="icon" href="{{ .RelPermalink }}" type="image/png" sizes="64x64">
+{{- else }}
+<link rel="icon" href="{{ "images/logo.png" | relURL }}" type="image/png">
+{{- end }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Caveat:wght@500;600;700&family=Manrope:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+{{ with resources.Get "css/main.css" }}
+  {{ $css := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+
+{{ partial "schema.html" . }}

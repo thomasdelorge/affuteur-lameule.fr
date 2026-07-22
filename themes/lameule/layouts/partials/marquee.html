@@ -1,0 +1,12 @@
+{{ $m := hugo.Data.marquee }}
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {{ range seq 2 }}
+      <div class="marquee__group">
+        {{ range $m.items }}
+          <span>{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>

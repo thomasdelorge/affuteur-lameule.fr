@@ -1,0 +1,43 @@
+{{- $phone := strings.TrimPrefix "tel:" site.Params.phoneHref -}}
+{{- $logo := resources.Get (site.Params.logo | default "images/logo.png") -}}
+{{- $ogSrc := resources.Get (site.Params.ogImage | default "images/hero-clients.jpg") -}}
+{{- $image := printf "%simages/hero-clients.jpg" site.BaseURL -}}
+{{- $logoURL := printf "%simages/logo.png" site.BaseURL -}}
+{{- with $ogSrc -}}
+  {{- $image = (.Fill "1200x630 center q80 webp").Permalink -}}
+{{- end -}}
+{{- with $logo -}}
+  {{- $logoURL = (.Resize "256x png").Permalink -}}
+{{- end -}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "LocalBusiness"
+  "@id" (printf "%s#business" site.BaseURL)
+  "name" site.Params.brand
+  "alternateName" (printf "Affûteur La Meule · %s" site.Params.artisan)
+  "description" "Affûtage artisanal de couteaux, ciseaux, outils de jardin et lames de tondeuse. Intervention sur les marchés, en points de dépôt et à domicile en Maine-et-Loire et Deux-Sèvres."
+  "url" site.BaseURL
+  "telephone" $phone
+  "email" site.Params.email
+  "image" $image
+  "logo" $logoURL
+  "priceRange" "€"
+  "currenciesAccepted" "EUR"
+  "paymentAccepted" "Cash, Card"
+  "founder" (dict "@type" "Person" "name" site.Params.artisan)
+  "areaServed" (slice
+    (dict "@type" "AdministrativeArea" "name" "Maine-et-Loire")
+    (dict "@type" "AdministrativeArea" "name" "Deux-Sèvres")
+    (dict "@type" "Place" "name" site.Params.zoneDetail)
+  )
+  "knowsAbout" (slice
+    "Affûtage de couteaux"
+    "Affûtage de ciseaux"
+    "Affûtage d'outils de jardin"
+    "Affûtage de lames de tondeuse"
+    "Rémouleur"
+  )
+  "sameAs" (slice site.Params.facebook site.Params.instagram)
+  "hasMap" site.Params.mapsUrl
+-}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

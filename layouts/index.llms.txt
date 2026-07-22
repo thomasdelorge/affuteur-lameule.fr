@@ -1,0 +1,47 @@
+# {{ site.Params.brand }}
+
+> Affûtage artisanal de couteaux, ciseaux et outils par {{ site.Params.artisan }} (rémouleur ambulant). Zone : {{ site.Params.zone }} ({{ site.Params.zoneDetail }}). Camion-atelier, marchés, points de dépôt et déplacements.
+
+Contact principal : téléphone / SMS {{ site.Params.phone }} ({{ site.Params.phoneHref }}), e-mail {{ site.Params.email }}.
+Prise de rendez-vous et planning des tournées sur le site. Devis sur demande.
+
+Mots-clés utiles : affûteur, rémouleur, affûtage ciseaux couture, couteaux de cuisine, lames de tondeuse, outils de jardin, Maine-et-Loire, Deux-Sèvres, Bressuire, Lys-Haut-Layon.
+
+## Pages
+
+- [Accueil (HTML)]({{ site.BaseURL }}) : site vitrine one-page, services, déroulement, publics, planning
+- [Accueil (Markdown)]({{ site.BaseURL }}index.html.md) : même contenu en Markdown lisible par agents
+- [Mentions légales]({{ site.BaseURL }}mentions-legales/) : éditeur, hébergement, données personnelles
+- [Mentions légales (Markdown)]({{ site.BaseURL }}mentions-legales/index.html.md)
+
+## Services d'affûtage
+
+{{ range hugo.Data.services.items -}}
+- **{{ .title }}** : {{ .description }}
+{{ end }}
+
+## Où trouver l'artisan
+
+- Sur les marchés et permanences indiqués au planning (Google Calendar embarqué sur l'accueil)
+- À domicile / en déplacement pour professionnels et collectivités
+{{- with hugo.Data.location.depots }}
+- Points de dépôt :
+{{- range .items }}
+  - {{ .name }} ({{ .place }}) — {{ .maps_url }}
+{{- end }}
+{{- end }}
+
+## Coordonnées & présence
+
+- Téléphone : {{ site.Params.phone }}
+- E-mail : {{ site.Params.email }}
+- Zone : {{ site.Params.zone }}
+- Carte : {{ site.Params.mapsUrl }}
+- Facebook : {{ site.Params.facebook }}
+- Instagram : {{ site.Params.instagram }}
+
+## Optional
+
+- [Sitemap]({{ site.BaseURL }}sitemap.xml) : pages indexables
+- [robots.txt]({{ site.BaseURL }}robots.txt) : règles d'exploration
+- [Spécification llms.txt](https://llmstxt.org/) : format de ce fichier

@@ -1,0 +1,27 @@
+{{ $h := hugo.Data.hero }}
+<section class="hero" id="top">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ site.Params.brand }} · {{ site.Params.zone }}</p>
+      <h1 class="hero__title">
+        {{ $h.headline_before }}
+        <span class="accent">{{ $h.headline_accent }}</span>
+      </h1>
+      <p class="hero__sub">{{ $h.subheadline }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--accent" href="{{ $h.cta_primary_url }}">{{ $h.cta_primary }}</a>
+        <a class="btn btn--ghost" href="{{ $h.cta_secondary_url }}">{{ $h.cta_secondary }}</a>
+      </div>
+    </div>
+    <figure class="hero__media">
+      {{ partial "responsive-image.html" (dict
+        "src" $h.image
+        "alt" $h.image_alt
+        "widths" (slice 480 800 1200)
+        "sizes" "(max-width: 900px) 100vw, 520px"
+        "quality" 72
+        "priority" true
+      ) }}
+    </figure>
+  </div>
+</section>

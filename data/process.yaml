@@ -1,0 +1,14 @@
+# Éditable — comment ça marche
+title: "SIMPLE, LOCAL ET SANS DÉTOUR."
+image: "images/process-artisan.jpg"
+image_alt: "Jérémie affûte une paire de ciseaux sur son atelier mobile"
+steps:
+  - number: "1"
+    title: "Localisation"
+    description: "Je suis sur les marchés, en points de dépôt ou en déplacement. Consultez le planning pour savoir où me trouver."
+  - number: "2"
+    title: "Prise de RDV"
+    description: "Appelez ou envoyez un SMS. On fixe un créneau, un dépôt ou un passage à domicile selon vos besoins."
+  - number: "3"
+    title: "Remise en état"
+    description: "Affûtage soigné sur meule, finition et contrôle. Vous récupérez des lames qui coupent comme neuves."

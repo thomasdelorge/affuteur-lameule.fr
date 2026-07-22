@@ -1,0 +1,23 @@
+# Éditable — où me trouver
+title: "JE VIENS JUSQU'À VOUS."
+modes:
+  - title: "SUR LE MARCHÉ"
+    description: "Je suis présent sur les marchés et permanences indiqués au planning. Apportez vos lames, repartez avec un vrai fil."
+    icon: "market"
+  - title: "À DOMICILE"
+    description: "Déplacement pour les professionnels et collectivités, et sur demande pour les particuliers de la zone."
+    icon: "home"
+depots:
+  title: "Points de dépôt"
+  intro: "Déposez vos lames chez mes partenaires, je m'occupe du reste."
+  items:
+    - name: "Épicerie Au Plain Panier"
+      place: "Saint-Aubin-du-Plain"
+      maps_url: "https://maps.app.goo.gl/3rszjC7KCr7bxZf1A"
+    - name: "Atelier du Tissu"
+      place: "Bressuire"
+      maps_url: "https://maps.app.goo.gl/1zcoQ6KkYo3M7VzAA"
+banner: "Contactez-moi directement par téléphone pour toute demande spécifique."
+planning_title: "TOURNÉES & AFFÛTAGES"
+planning_cta: "Je prends RDV"
+event_cta: "J'ai un événement à proposer"

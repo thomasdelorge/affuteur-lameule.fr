@@ -1,0 +1,25 @@
+# Éditable — pour qui / tarifs orientés
+title: "UN SERVICE TAILLÉ POUR CHACUN."
+intro: "Des tarifs adaptés selon le type d'outil et le volume. Demandez un devis par téléphone ou SMS."
+items:
+  - title: "Particuliers"
+    icon: "home"
+    points:
+      - "Couteaux et ciseaux du quotidien"
+      - "Outils de jardin et tondeuse"
+      - "Dépôt en magasin ou sur les marchés"
+      - "Passage à domicile sur demande"
+  - title: "Professionnels"
+    icon: "briefcase"
+    points:
+      - "Couturières, brodeuses, patcheuses"
+      - "Cuisiniers, traiteurs, restaurants"
+      - "Coiffeurs, barbiers, toiletteurs"
+      - "Interventions régulières possibles"
+  - title: "Collectivités"
+    icon: "building"
+    points:
+      - "Écoles, restaurants collectifs"
+      - "Services techniques et espaces verts"
+      - "Contrats et tournées planifiées"
+      - "Devis sur mesure"

@@ -1,0 +1,8 @@
+name = "lameule"
+license = "MIT"
+description = "Theme for Affûteur LA MEULE — single-page artisan site"
+homepage = "https://affuteur-lameule.fr/"
+min_version = "0.164.0"
+
+[author]
+  name = "Affûteur LA MEULE"

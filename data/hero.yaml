@@ -1,0 +1,10 @@
+# Éditable par l'artisan — section d'accueil
+headline_before: "RESTEZ"
+headline_accent: "AFFÛTÉ."
+subheadline: "De l'efficacité comme neuf"
+cta_primary: "Prendre rendez-vous"
+cta_primary_url: "/#planning"
+cta_secondary: "Voir le planning"
+cta_secondary_url: "/#planning"
+image: "images/hero-clients.jpg"
+image_alt: "Jérémie accueille des clients devant le camion-atelier Affûteur LA MEULE"

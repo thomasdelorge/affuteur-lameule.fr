@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Agent-friendly content (https://llmstxt.org/)
+Allow: /llms.txt
+Allow: /*.md$
+
+Sitemap: https://affuteur-lameule.fr/sitemap.xml

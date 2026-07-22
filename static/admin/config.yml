@@ -1,0 +1,119 @@
+backend:
+  name: github
+  repo: thomasdelorge/affuteur-lameule.fr
+  branch: main
+media_folder: static/images
+public_folder: /images
+collections:
+  - name: config
+    label: Coordonnées & site
+    files:
+      - label: Configuration du site
+        name: site
+        file: hugo.toml
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - label: Paramètres
+            name: params
+            widget: object
+            fields:
+              - { label: Marque, name: brand, widget: string }
+              - { label: Artisan, name: artisan, widget: string }
+              - { label: Téléphone (affichage), name: phone, widget: string }
+              - { label: Téléphone (lien tel:), name: phoneHref, widget: string }
+              - { label: E-mail, name: email, widget: string }
+              - { label: Zone, name: zone, widget: string }
+              - { label: Détail zone, name: zoneDetail, widget: string }
+              - { label: Google Maps, name: mapsUrl, widget: string }
+              - { label: Facebook, name: facebook, widget: string }
+              - { label: Instagram, name: instagram, widget: string }
+              - { label: iframe Google Calendar, name: calendarEmbed, widget: text }
+              - { label: ID vidéo YouTube (optionnel), name: videoId, widget: string, required: false }
+
+  - name: data
+    label: Contenus de la page
+    files:
+      - file: data/hero.yaml
+        label: Accueil (hero)
+        name: hero
+        fields:
+          - { label: Titre (avant accent), name: headline_before, widget: string }
+          - { label: Titre accentué, name: headline_accent, widget: string }
+          - { label: Sous-titre, name: subheadline, widget: string }
+          - { label: Bouton principal, name: cta_primary, widget: string }
+          - { label: Lien bouton principal, name: cta_primary_url, widget: string }
+          - { label: Lien secondaire, name: cta_secondary, widget: string }
+          - { label: URL lien secondaire, name: cta_secondary_url, widget: string }
+          - { label: Image, name: image, widget: string }
+          - { label: Texte alternatif image, name: image_alt, widget: string }
+
+      - file: data/services.yaml
+        label: Services
+        name: services
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - { label: Texte lien bas, name: footer_link_text, widget: string }
+          - { label: URL lien bas, name: footer_link_url, widget: string }
+          - label: Liste
+            name: items
+            widget: list
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Icône (knife, scissors, garden, mower, wood, hair), name: icon, widget: string }
+
+      - file: data/process.yaml
+        label: Déroulement
+        name: process
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - { label: Image, name: image, widget: string }
+          - { label: Texte alternatif, name: image_alt, widget: string }
+          - label: Étapes
+            name: steps
+            widget: list
+            fields:
+              - { label: Numéro, name: number, widget: string }
+              - { label: Titre, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+      - file: data/audiences.yaml
+        label: Publics / tarifs
+        name: audiences
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - { label: Intro, name: intro, widget: text }
+          - label: Cartes
+            name: items
+            widget: list
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Icône (home, briefcase, building), name: icon, widget: string }
+              - { label: Points, name: points, widget: list, field: { label: Point, name: point, widget: string } }
+
+      - file: data/location.yaml
+        label: Où me trouver
+        name: location
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - { label: Bandeau contact, name: banner, widget: string }
+          - { label: Titre planning, name: planning_title, widget: string }
+          - { label: CTA planning, name: planning_cta, widget: string }
+          - { label: CTA événement, name: event_cta, widget: string }
+
+      - file: data/video.yaml
+        label: Métier / vidéo
+        name: video
+        fields:
+          - { label: Titre, name: title, widget: string }
+          - { label: Texte, name: text, widget: markdown }
+          - { label: Image (si pas de vidéo), name: image, widget: string }
+          - { label: Texte alternatif, name: image_alt, widget: string }
+
+      - file: data/footer.yaml
+        label: Pied de page
+        name: footer
+        fields:
+          - { label: Accroche, name: headline, widget: string }
+          - { label: Titre coordonnées, name: coords_title, widget: string }
+          - { label: Copyright, name: copyright, widget: string }

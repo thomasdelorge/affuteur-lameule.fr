@@ -1,0 +1,25 @@
+{{ $a := hugo.Data.audiences }}
+<section class="section section--cream" id="audiences">
+  <div class="container">
+    <header class="section__header section__header--center">
+      <p class="eyebrow eyebrow--center">Pour qui</p>
+      <h2 class="section__title">{{ $a.title }}</h2>
+      {{ with $a.intro }}<p class="section__intro">{{ . }}</p>{{ end }}
+    </header>
+    <div class="audience-grid">
+      {{ range $a.items }}
+        <article class="audience-card">
+          <span class="audience-card__icon" aria-hidden="true">
+            {{ partial (printf "icons/%s.html" .icon) . }}
+          </span>
+          <h3>{{ .title }}</h3>
+          <ul>
+            {{ range .points }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

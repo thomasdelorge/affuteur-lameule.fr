@@ -1,0 +1,34 @@
+{{ $f := hugo.Data.footer }}
+<footer class="site-footer" id="footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__cta">
+      <p class="site-footer__headline">{{ $f.headline }}</p>
+      <a class="phone-block" href="{{ site.Params.phoneHref | safeURL }}">{{ site.Params.phone }}</a>
+    </div>
+    <div class="site-footer__coords">
+      <h2>{{ $f.coords_title }}</h2>
+      <p>{{ site.Params.artisan }}</p>
+      <p>{{ site.Params.zone }}<br>{{ site.Params.zoneDetail }}</p>
+      <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+      <p><a href="{{ site.Params.mapsUrl }}" rel="noopener" target="_blank">Voir sur Google Maps</a></p>
+      <ul class="socials">
+        {{ with site.Params.facebook }}
+          <li><a href="{{ . }}" rel="noopener" target="_blank" aria-label="Facebook">{{ partial "icons/facebook.html" . }}</a></li>
+        {{ end }}
+        {{ with site.Params.instagram }}
+          <li><a href="{{ . }}" rel="noopener" target="_blank" aria-label="Instagram">{{ partial "icons/instagram.html" . }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="container site-footer__bottom-inner">
+      <p>© {{ now.Year }} {{ $f.copyright }}</p>
+      <ul>
+        {{ range $f.legal_links }}
+          <li><a href="{{ .url | relURL }}">{{ .name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</footer>

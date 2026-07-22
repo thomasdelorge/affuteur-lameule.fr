@@ -1,0 +1,56 @@
+{{/*
+  Responsive <picture> with WebP srcset + JPEG/PNG fallback.
+  partial "responsive-image.html" (dict "src" "images/foo.jpg" "alt" "..." ...)
+*/}}
+{{- $path := strings.TrimPrefix "/" (.src | default "") -}}
+{{- $img := resources.Get $path -}}
+{{- if not $img -}}
+  {{- warnf "responsive-image: missing asset %q" $path -}}
+{{- else -}}
+  {{- $widths := .widths | default (slice 480 800 1200) -}}
+  {{- $quality := .quality | default 75 -}}
+  {{- $alt := .alt | default "" -}}
+  {{- $sizes := .sizes | default "100vw" -}}
+  {{- $class := .class | default "" -}}
+  {{- $priority := eq .priority true -}}
+  {{- $loading := cond $priority "eager" (.loading | default "lazy") -}}
+
+  {{- $webpSet := slice -}}
+  {{- $rasterSet := slice -}}
+  {{- range $w := $widths -}}
+    {{- if and (gt $w 0) (le $w $img.Width) -}}
+      {{- $webp := $img.Resize (printf "%dx webp q%d" $w $quality) -}}
+      {{- $raster := $img.Resize (printf "%dx q%d" $w $quality) -}}
+      {{- $webpSet = $webpSet | append (printf "%s %dw" $webp.RelPermalink $w) -}}
+      {{- $rasterSet = $rasterSet | append (printf "%s %dw" $raster.RelPermalink $w) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Ensure at least one candidate (original width capped). */ -}}
+  {{- if eq (len $rasterSet) 0 -}}
+    {{- $w := $img.Width -}}
+    {{- $webp := $img.Resize (printf "%dx webp q%d" $w $quality) -}}
+    {{- $raster := $img.Resize (printf "%dx q%d" $w $quality) -}}
+    {{- $webpSet = slice (printf "%s %dw" $webp.RelPermalink $w) -}}
+    {{- $rasterSet = slice (printf "%s %dw" $raster.RelPermalink $w) -}}
+  {{- end -}}
+
+  {{- $fbW := index $widths (sub (len $widths) 1) -}}
+  {{- if gt $fbW $img.Width }}{{ $fbW = $img.Width }}{{ end -}}
+  {{- $fallback := $img.Resize (printf "%dx q%d" $fbW $quality) -}}
+
+  <picture>
+    <source type="image/webp" sizes="{{ $sizes }}" srcset="{{ delimit $webpSet ", " }}">
+    <img
+      src="{{ $fallback.RelPermalink }}"
+      width="{{ $fallback.Width }}"
+      height="{{ $fallback.Height }}"
+      alt="{{ $alt }}"
+      {{- with $class }} class="{{ . }}"{{ end }}
+      sizes="{{ $sizes }}"
+      srcset="{{ delimit $rasterSet ", " }}"
+      loading="{{ $loading }}"
+      decoding="async"
+      {{- if $priority }} fetchpriority="high"{{ end }}>
+  </picture>
+{{- end -}}

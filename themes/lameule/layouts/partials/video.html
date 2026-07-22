@@ -1,0 +1,33 @@
+{{ $v := hugo.Data.video }}
+<section class="section section--dark" id="metier">
+  <div class="container video__grid">
+    <div class="video__copy">
+      <p class="eyebrow eyebrow--light">En atelier</p>
+      <h2 class="section__title section__title--light">{{ $v.title }}</h2>
+      <div class="video__text">{{ $v.text | markdownify }}</div>
+    </div>
+    <div class="video__media">
+      {{ with site.Params.videoId }}
+        <div class="video__frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{ . }}"
+            title="{{ $v.title }}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+      {{ else }}
+        <figure>
+          {{ partial "responsive-image.html" (dict
+            "src" $v.image
+            "alt" $v.image_alt
+            "widths" (slice 480 800 1200)
+            "sizes" "(max-width: 900px) 100vw, 560px"
+            "quality" 72
+          ) }}
+        </figure>
+      {{ end }}
+    </div>
+  </div>
+</section>

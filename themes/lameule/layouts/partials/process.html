@@ -1,0 +1,29 @@
+{{ $p := hugo.Data.process }}
+<section class="section section--dark" id="process">
+  <div class="container process__grid">
+    <figure class="process__media">
+      {{ partial "responsive-image.html" (dict
+        "src" $p.image
+        "alt" $p.image_alt
+        "widths" (slice 400 700 1000)
+        "sizes" "(max-width: 900px) 90vw, 380px"
+        "quality" 72
+      ) }}
+    </figure>
+    <div class="process__content">
+      <p class="eyebrow eyebrow--light">Comment ça marche</p>
+      <h2 class="section__title section__title--light">{{ $p.title }}</h2>
+      <ol class="steps">
+        {{ range $p.steps }}
+          <li class="step">
+            <span class="step__num">{{ .number }}</span>
+            <div>
+              <h3>{{ .title }}</h3>
+              <p>{{ .description }}</p>
+            </div>
+          </li>
+        {{ end }}
+      </ol>
+    </div>
+  </div>
+</section>

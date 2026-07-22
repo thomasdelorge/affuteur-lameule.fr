@@ -1,0 +1,25 @@
+{{/*
+  Optimized logo from assets (square, small WebP + PNG fallback).
+*/}}
+{{- $path := strings.TrimPrefix "/" (.src | default site.Params.logoLight) -}}
+{{- $size := .size | default 80 -}}
+{{- $alt := .alt | default site.Params.brand -}}
+{{- $class := .class | default "" -}}
+{{- $img := resources.Get $path -}}
+{{- if $img -}}
+  {{- $png := $img.Resize (printf "%dx%d png" $size $size) -}}
+  {{- $webp := $img.Resize (printf "%dx%d webp q80" $size $size) -}}
+  <picture>
+    <source type="image/webp" srcset="{{ $webp.RelPermalink }}">
+    <img
+      src="{{ $png.RelPermalink }}"
+      width="{{ $size }}"
+      height="{{ $size }}"
+      alt="{{ $alt }}"
+      {{- with $class }} class="{{ . }}"{{ end }}
+      loading="eager"
+      decoding="async">
+  </picture>
+{{- else -}}
+  <img src="{{ printf "/%s" $path | relURL }}" width="{{ $size }}" height="{{ $size }}" alt="{{ $alt }}" {{- with $class }} class="{{ . }}"{{ end }}>
+{{- end -}}

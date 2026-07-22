@@ -1,0 +1,47 @@
+{{ $l := hugo.Data.location }}
+<section class="section section--cream" id="ou-me-trouver">
+  <div class="container">
+    <p class="eyebrow">Où me trouver</p>
+    <h2 class="section__title">{{ $l.title }}</h2>
+    <div class="mode-grid">
+      {{ range $l.modes }}
+        <article class="mode-card">
+          <span class="mode-card__icon" aria-hidden="true">
+            {{ partial (printf "icons/%s.html" .icon) . }}
+          </span>
+          <h3>{{ .title }}</h3>
+          <p>{{ .description }}</p>
+        </article>
+      {{ end }}
+    </div>
+
+    {{ with $l.depots }}
+      <div class="depots">
+        <div class="depots__head">
+          <p class="eyebrow">Dépôts partenaires</p>
+          <h3 class="depots__title">{{ .title }}</h3>
+          {{ with .intro }}<p class="depots__intro">{{ . }}</p>{{ end }}
+        </div>
+        <ul class="depots__grid">
+          {{ range .items }}
+            <li>
+              <a class="mode-card depot-card" href="{{ .maps_url }}" rel="noopener" target="_blank">
+                <span class="mode-card__icon" aria-hidden="true">
+                  {{ partial "icons/pin.html" . }}
+                </span>
+                <h3>{{ .name }}</h3>
+                <p>{{ .place }}</p>
+                <span class="depot-card__link">Voir sur la carte →</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    <div class="contact-banner" id="contact">
+      <p>{{ $l.banner }}</p>
+      <a class="btn btn--accent" href="{{ site.Params.phoneHref | safeURL }}">{{ site.Params.phone }}</a>
+    </div>
+  </div>
+</section>

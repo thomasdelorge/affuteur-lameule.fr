@@ -1,0 +1,23 @@
+{{ $s := hugo.Data.services }}
+<section class="section section--cream" id="services">
+  <div class="container">
+    <p class="eyebrow">Ce que j'affûte</p>
+    <h2 class="section__title">{{ $s.title }}</h2>
+    <ul class="services-grid">
+      {{ range $s.items }}
+        <li class="service-item">
+          <span class="service-item__icon" aria-hidden="true">
+            <i class="fa-solid fa-{{ .icon }}"></i>
+          </span>
+          <div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+    <p class="section__footer-link">
+      <a class="text-link text-link--dark" href="{{ $s.footer_link_url }}">{{ $s.footer_link_text }} →</a>
+    </p>
+  </div>
+</section>
