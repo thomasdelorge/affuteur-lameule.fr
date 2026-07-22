@@ -40,10 +40,10 @@
 <link rel="icon" href="{{ "images/logo.png" | relURL }}" type="image/png">
 {{- end }}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-{{/* Keep Google Fonts CDN; only request weights actually used in CSS. */}}
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Caveat:wght@600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{/* Critical self-hosted fonts (body + display above the fold). */}}
+<link rel="preload" href="{{ "fonts/manrope-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/big-shoulders-display-700.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/caveat-600.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 
 {{ with resources.Get "css/main.css" }}
   {{ $css := . | minify | fingerprint }}
