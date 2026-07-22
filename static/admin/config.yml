@@ -62,7 +62,7 @@ collections:
             fields:
               - { label: Titre, name: title, widget: string }
               - { label: Description, name: description, widget: text }
-              - { label: Icône (knife, scissors, garden, mower, wood, hair), name: icon, widget: string }
+              - { label: Icône (utensils, scissors, seedling, fan, hammer, cut), name: icon, widget: string }
 
       - file: data/process.yaml
         label: Déroulement

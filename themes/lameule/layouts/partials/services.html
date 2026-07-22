@@ -7,7 +7,7 @@
       {{ range $s.items }}
         <li class="service-item">
           <span class="service-item__icon" aria-hidden="true">
-            <i class="fa-solid fa-{{ .icon }}"></i>
+            {{ partial (printf "icons/%s.html" .icon) . }}
           </span>
           <div>
             <h3>{{ .title }}</h3>

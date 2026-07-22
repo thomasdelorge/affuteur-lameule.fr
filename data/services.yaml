@@ -1,5 +1,5 @@
 # Éditable — grille des services
-# icon = classe Font Awesome (ex. utensils, scissors, axe…)
+# icon = nom du partial SVG (Font Awesome solid) : utensils, scissors, seedling, fan, hammer, cut
 title: "CHAQUE LAME MÉRITE UN VRAI FIL."
 footer_link_text: "Pour qui je travaille"
 footer_link_url: "/#audiences"
