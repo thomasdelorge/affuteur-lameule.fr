@@ -32,7 +32,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --baseURL "https://affuteur-lameule.fr/"
+        run: hugo --minify --baseURL "https://thomasdelorge.github.io/affuteur-lameule.fr/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

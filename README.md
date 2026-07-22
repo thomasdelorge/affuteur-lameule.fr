@@ -4,15 +4,6 @@ Site vitrine statique pour l'activité d'affûtage de **Jérémie JOUET** (camio
 
 Stack : [Hugo](https://gohugo.io/) + thème maison `themes/lameule` + déploiement [GitHub Pages](https://pages.github.com/).
 
-## Infos entreprise
-
-- Téléphone : 06 02 23 80 08
-- E-mail : contact@affuteur-lameule.fr
-- Zone : Maine-et-Loire & Deux-Sèvres (Lys-Haut-Layon / Nueil-les-Aubiers)
-- [Google Maps](https://maps.app.goo.gl/6B8nehasxDr69eMj6)
-- [Facebook](https://www.facebook.com/AffuteurLAMEULE)
-- [Instagram](https://www.instagram.com/affuteur_lameule)
-
 ## Prérequis (développeur)
 
 - [Hugo Extended](https://gohugo.io/installation/) ≥ 0.164
@@ -70,19 +61,27 @@ Remplacer les fichiers dans `static/images/` en gardant les mêmes noms, ou mett
 ### Interface visuelle (optionnel)
 
 Un éditeur [Decap CMS](https://decapcms.org/) est préparé sous `/admin/`.  
-Il nécessite un backend d'auth (Net  # YouTube video ID (section « Le rémouleur en action »)
-  videoId = "PHYnX07F2QM"
-  logo = "/images/logo.png"ify Identity + Git Gateway, ou backend GitHub avec OAuth).  
+Il nécessite un backend d'auth (Netlify Identity + Git Gateway, ou backend GitHub avec OAuth).  
 Sans ça, l'édition se fait directement via les fichiers YAML ci-dessus (Pull Request ou commit).
 
 ## Déploiement
 
-### GitHub Pages (recommandé)
+### GitHub Pages (preview actuelle)
 
-1. Pousser le dépôt sur GitHub.
-2. Settings → Pages → Source : **GitHub Actions**.
-3. Le workflow `.github/workflows/deploy.yml` build et publie à chaque push sur `main`.
-4. Domaine custom : le fichier `static/CNAME` contient `affuteur-lameule.fr`. Pointer le DNS (A/AAAA ou CNAME) vers GitHub Pages.
+Preview sans domaine custom :
+
+**https://thomasdelorge.github.io/affuteur-lameule.fr/**
+
+1. Pousser sur `main`
+2. Settings → Pages → Source : **GitHub Actions**
+3. Le workflow build avec ce `baseURL` (voir `hugo.toml` et `.github/workflows/deploy.yml`)
+
+
+### Passage au domaine `affuteur-lameule.fr`
+
+1. Remettre `static/CNAME` avec le contenu `affuteur-lameule.fr`
+2. Changer `baseURL` (et le build CI) vers `https://affuteur-lameule.fr/`
+3. Pointer le DNS vers GitHub Pages
 
 ### Reverse proxy (nginx, Caddy, etc.)
 

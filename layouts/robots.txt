@@ -5,4 +5,4 @@ Allow: /
 Allow: /llms.txt
 Allow: /*.md$
 
-Sitemap: https://affuteur-lameule.fr/sitemap.xml
+Sitemap: {{ "sitemap.xml" | absURL }}
